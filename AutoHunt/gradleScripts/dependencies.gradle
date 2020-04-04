@@ -26,6 +26,7 @@ ext {
             'photoView'         : '2.0.0',
 
             // Utils
-            'timber'            : '4.7.1'
+            'timber'            : '4.7.1',
+            'spinner'           : '1.4.0'
     ]
 }
