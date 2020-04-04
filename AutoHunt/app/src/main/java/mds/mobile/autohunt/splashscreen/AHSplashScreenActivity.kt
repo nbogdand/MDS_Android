@@ -1,4 +1,4 @@
-package mds.mobile.autohunt.views.activities
+package mds.mobile.autohunt.splashscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import mds.mobile.autohunt.R
 import mds.mobile.autohunt.utils.AHConstants
+import mds.mobile.autohunt.home.views.activities.AHHomeActivity
 import java.util.concurrent.TimeUnit
 
 class AHSplashScreenActivity : AppCompatActivity() {

@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.activities.AHHomeActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data class="AHHomeActivityBinding">
+        <variable
+            name="viewPagerAdapter"
+            type="mds.mobile.autohunt.home.adapters.AHHomeViewPagerAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".home.views.activities.AHHomeActivity">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_home"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:adapter="@{viewPagerAdapter}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation_constraint"/>
+
+        <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
+            android:id="@+id/bottom_navigation_constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            app:bnc_mode="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                android:id="@+id/c_item_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bt_active="false"
+                app:bt_colorActive="@color/colorMoss3"
+                app:bt_colorInactive="@color/colorMossAlternative"
+                app:bt_icon="@drawable/ic_to_do_list"
+                app:bt_title="List"
+                app:bt_padding="@dimen/default_padding_half"
+                app:bt_titlePadding="@dimen/default_padding_half" />
+
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                android:id="@+id/c_item_cat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bt_active="true"
+                app:bt_colorActive="@color/colorMoss3"
+                app:bt_colorInactive="@color/colorMossAlternative"
+                app:bt_icon="@drawable/ic_car"
+                app:bt_title="Cars"
+                app:bt_padding="@dimen/default_padding_half"
+                app:bt_titlePadding="@dimen/default_padding_half" />
+
+            <com.gauravk.bubblenavigation.BubbleToggleView
+                android:id="@+id/c_item_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bt_active="false"
+                app:bt_colorActive="@color/colorMoss3"
+                app:bt_colorInactive="@color/colorMossAlternative"
+                app:bt_icon="@drawable/ic_user"
+                app:bt_title="Account"
+                app:bt_padding="@dimen/default_padding_half"
+                app:bt_titlePadding="@dimen/default_padding_half" />
+
+
+        </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

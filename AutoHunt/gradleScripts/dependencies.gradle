@@ -5,6 +5,9 @@ ext {
             'material'          : '1.1.0',
             'constraintLayout'  : '1.1.3',
             'swipeRefreshLayout': '1.0.0',
+            'appCompat'          : '1.1.0',
+            'legacy'             : '1.0.0',
+            'viewPager2'         : '1.0.0',
 
             // Architecture components
             'lifecycle'         : '2.2.0',
@@ -27,6 +30,7 @@ ext {
 
             // Utils
             'timber'            : '4.7.1',
-            'spinner'           : '1.4.0'
+            'spinner'           : '1.4.0',
+            'bubbleNavigation'  : '1.0.7'
     ]
 }

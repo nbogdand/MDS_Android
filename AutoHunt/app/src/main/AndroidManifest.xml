@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.activities.AHHomeActivity"></activity>
-        <activity android:name=".views.activities.AHSplashScreenActivity">
+        <activity android:name=".authentication.views.AHAuthActivity"></activity>
+        <activity android:name=".home.views.activities.AHHomeActivity" />
+        <activity android:name=".splashscreen.AHSplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.activities.MainActivity"
+            android:name=".home.activities.MainActivity"
             android:screenOrientation="unspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
