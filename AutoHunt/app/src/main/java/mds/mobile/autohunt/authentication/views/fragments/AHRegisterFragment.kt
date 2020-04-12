@@ -1,21 +1,22 @@
-package mds.mobile.autohunt.authentication.views
+package mds.mobile.autohunt.authentication.views.fragments
 
-import android.os.Binder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import mds.mobile.autohunt.R
 import mds.mobile.autohunt.authentication.viewModels.AHRegisterFragmentViewModel
 import mds.mobile.autohunt.databinding.AHRegisterFragmentBinding
 
-class AHRegisterFragment : Fragment() {
+class AHRegisterFragment : AHBaseAuthFragment() {
 
     companion object {
-        fun newInstance() = AHRegisterFragment()
+        fun newInstance() =
+            AHRegisterFragment()
     }
 
     private val viewModel by lazy {
@@ -42,5 +43,11 @@ class AHRegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewModel = viewModel
+        viewModel.goToLogin = {
+            authNavigation?.goToLogin()
+        }
+        viewModel.onRegisterSuccess = {
+            activity?.finish()
+        }
     }
 }

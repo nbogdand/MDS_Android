@@ -7,6 +7,9 @@
         <variable
             name="viewPagerAdapter"
             type="mds.mobile.autohunt.home.adapters.AHHomeViewPagerAdapter" />
+        <variable
+            name="viewModel"
+            type="mds.mobile.autohunt.home.viewModels.AHHomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

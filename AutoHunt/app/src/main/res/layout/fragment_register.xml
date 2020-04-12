@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="AHRegisterFragmentBinding">
+
         <variable
             name="viewModel"
             type="mds.mobile.autohunt.authentication.viewModels.AHRegisterFragmentViewModel" />
@@ -12,142 +13,173 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".authentication.views.AHLoginFragment">
+        tools:context=".authentication.views.fragments.AHLoginFragment">
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_email_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="?android:attr/actionBarSize"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
+            android:gravity="center"
+            android:minHeight="?android:attr/actionBarSize"
             android:paddingStart="@dimen/default_padding_half"
             android:paddingTop="@dimen/default_padding"
             android:paddingEnd="@dimen/default_padding_half"
             android:paddingBottom="@dimen/default_padding"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/til_phone_container"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/til_phone_container">
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tie_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:afterTextChanged="@{() -> viewModel.updateRegisterCapability()}"
                 android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:paddingStart="@dimen/default_padding"
                 android:paddingEnd="@dimen/default_padding"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={viewModel.email}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_phone_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_padding"
             android:gravity="center"
             android:minHeight="?android:attr/actionBarSize"
-            android:layout_margin="@dimen/default_padding"
             android:paddingStart="@dimen/default_padding_half"
             android:paddingTop="@dimen/default_padding"
             android:paddingEnd="@dimen/default_padding_half"
             android:paddingBottom="@dimen/default_padding"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.30">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tie_phone"
+                android:id="@+id/tie_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="Phone"
+                android:afterTextChanged="@{() -> viewModel.updateRegisterCapability()}"
+                android:hint="Name"
+                android:inputType="text"
                 android:paddingStart="@dimen/default_padding"
                 android:paddingEnd="@dimen/default_padding"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={viewModel.name}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_pass_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
             android:gravity="center"
             android:minHeight="?android:attr/actionBarSize"
             android:paddingStart="@dimen/default_padding_half"
             android:paddingTop="@dimen/default_padding"
             android:paddingEnd="@dimen/default_padding_half"
             android:paddingBottom="@dimen/default_padding"
-            android:layout_marginStart="@dimen/default_padding"
-            android:layout_marginEnd="@dimen/default_padding"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_phone_container">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_phone_container"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tie_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:afterTextChanged="@{() -> viewModel.updateRegisterCapability()}"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:paddingStart="@dimen/default_padding"
                 android:paddingEnd="@dimen/default_padding"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={viewModel.password}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_conf_pass_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
             android:gravity="center"
             android:minHeight="?android:attr/actionBarSize"
             android:paddingStart="@dimen/default_padding_half"
             android:paddingTop="@dimen/default_padding"
             android:paddingEnd="@dimen/default_padding_half"
             android:paddingBottom="@dimen/default_padding"
-            android:layout_marginStart="@dimen/default_padding"
-            android:layout_marginEnd="@dimen/default_padding"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_pass_container">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_pass_container"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tie_conf_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:afterTextChanged="@{() -> viewModel.updateRegisterCapability()}"
                 android:hint="Confirm password"
+                android:inputType="textPassword"
                 android:paddingStart="@dimen/default_padding"
                 android:paddingEnd="@dimen/default_padding"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={viewModel.confirmPassword}" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewModel.error}"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_marginStart="@dimen/default_padding_double"
+            android:layout_marginEnd="@dimen/default_padding_double"
+            app:layout_constraintBottom_toTopOf="@id/tv_go_to_log_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_conf_pass_container" />
 
         <Button
             android:id="@+id/btn_sign_up"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Sign up"
             android:layout_margin="@dimen/default_padding"
+            android:background="@drawable/selector_primary_button_moss"
+            android:elevation="@dimen/default_elevation"
+            android:onClick="@{() -> viewModel.fireRegisterUser()}"
             android:paddingStart="@dimen/default_padding_double"
-            android:paddingEnd="@dimen/default_padding_double"
             android:paddingTop="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_padding_double"
             android:paddingBottom="@dimen/default_padding"
-            app:layout_constraintTop_toBottomOf="@id/til_conf_pass_container"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Sign up"
+            android:enabled="@{viewModel.registerEnabled}"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.20"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_conf_pass_container"
+            app:layout_constraintVertical_bias="0.60"
+            app:layout_constraintWidth_percent="0.40" />
 
         <TextView
+            android:id="@+id/tv_go_to_log_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_padding"
+            android:onClick="@{() -> viewModel.goToLogin()}"
             android:text="Go to Log in"
             app:layout_constraintBottom_toTopOf="@id/btn_sign_up"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="@dimen/default_padding"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,7 +1,6 @@
-package mds.mobile.autohunt.authentication.views
+package mds.mobile.autohunt.authentication.views.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,13 @@ import mds.mobile.autohunt.R
 import mds.mobile.autohunt.authentication.viewModels.AHLoginFragmentViewModel
 import mds.mobile.autohunt.databinding.AHLoginFragmentBinding
 
-class AHLoginFragment : Fragment() {
+class AHLoginFragment : AHBaseAuthFragment() {
+
+    companion object {
+        @JvmStatic
+        fun newInstance() =
+            AHLoginFragment()
+    }
 
     private val viewModel by lazy {
         ViewModelProvider(this).get(AHLoginFragmentViewModel::class.java)
@@ -38,11 +43,8 @@ class AHLoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewModel = viewModel
+        viewModel.goToRegister = { authNavigation?.goToRegister() }
+        viewModel.onLoginSuccess = { activity?.finish() }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            AHLoginFragment()
-    }
 }
