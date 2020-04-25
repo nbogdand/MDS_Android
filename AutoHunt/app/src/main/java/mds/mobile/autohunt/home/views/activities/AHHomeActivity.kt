@@ -25,7 +25,7 @@ class AHHomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<AHHomeActivityBinding>(
+        binding = DataBindingUtil.setContentView(
             this, R.layout.activity_home
         )
         binding.lifecycleOwner = this
@@ -35,13 +35,17 @@ class AHHomeActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
+        binding.vpHome.isUserInputEnabled = false
         binding.bottomNavigationConstraint.setNavigationChangeListener { _, position ->
             when (position) {
                 ScreenTypes.SCREEN_USER_DATA.position -> {
                     AHCurrentUser.user?.let {
-
+                        goToUserData()
                     } ?: goToAuth()
                 }
+
+                ScreenTypes.SCREEN_CAR_LIST.position -> goToCarList()
+                ScreenTypes.SCREEN_CAR_FORM.position -> goToCarForm()
             }
         }
     }
@@ -49,5 +53,17 @@ class AHHomeActivity : AppCompatActivity() {
     private fun goToAuth() {
         val intent = Intent(this, AHAuthActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun goToCarList() {
+        binding.vpHome.setCurrentItem(ScreenTypes.SCREEN_CAR_LIST.position, true)
+    }
+
+    private fun goToCarForm() {
+        binding.vpHome.setCurrentItem(ScreenTypes.SCREEN_CAR_FORM.position, true)
+    }
+
+    private fun goToUserData() {
+        binding.vpHome.setCurrentItem(ScreenTypes.SCREEN_USER_DATA.position, true)
     }
 }
