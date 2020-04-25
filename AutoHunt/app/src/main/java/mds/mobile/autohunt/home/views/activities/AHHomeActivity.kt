@@ -11,6 +11,7 @@ import mds.mobile.autohunt.R
 import mds.mobile.autohunt.authentication.views.activities.AHAuthActivity
 import mds.mobile.autohunt.databinding.AHHomeActivityBinding
 import mds.mobile.autohunt.globalUser.AHCurrentUser
+import mds.mobile.autohunt.globalUser.AHUser
 import mds.mobile.autohunt.home.adapters.AHHomeViewPagerAdapter
 import mds.mobile.autohunt.home.adapters.ScreenTypes
 import mds.mobile.autohunt.home.viewModels.AHHomeViewModel
@@ -39,6 +40,12 @@ class AHHomeActivity : AppCompatActivity() {
         binding.bottomNavigationConstraint.setNavigationChangeListener { _, position ->
             when (position) {
                 ScreenTypes.SCREEN_USER_DATA.position -> {
+                    AHCurrentUser.user = AHUser(
+                        id = "1",
+                        name = "Bogdan",
+                        email = "nbogdand@yahoo.com"
+                    )
+
                     AHCurrentUser.user?.let {
                         setToolbarTitle("Account")
                         goToUserData()
