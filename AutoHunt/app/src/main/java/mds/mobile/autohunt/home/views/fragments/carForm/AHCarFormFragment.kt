@@ -4,14 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import mds.mobile.autohunt.R
 import mds.mobile.autohunt.databinding.AHCarFormFragmentBinding
+import mds.mobile.autohunt.home.viewModels.AHCarFormFragmentViewModel
 import mds.mobile.autohunt.home.views.fragments.AHHomeBaseFragment
+import mds.mobile.autohunt.utils.viewModelFactory
 
 class AHCarFormFragment : AHHomeBaseFragment() {
 
     private lateinit var binding: AHCarFormFragmentBinding
+    private val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory {
+            AHCarFormFragmentViewModel(
+                brands = getBrands()
+            )
+        }).get(AHCarFormFragmentViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,5 +37,21 @@ class AHCarFormFragment : AHHomeBaseFragment() {
         )
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.viewModel = viewModel
+    }
+
+    private fun getBrands(): ArrayList<String> {
+        val brands = ArrayList<String>()
+        brands.add("Audi")
+        brands.add("BMW")
+        brands.add("Honda")
+        brands.add("Toyota")
+
+        return brands
     }
 }

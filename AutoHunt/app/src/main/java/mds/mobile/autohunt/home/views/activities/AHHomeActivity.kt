@@ -40,12 +40,19 @@ class AHHomeActivity : AppCompatActivity() {
             when (position) {
                 ScreenTypes.SCREEN_USER_DATA.position -> {
                     AHCurrentUser.user?.let {
+                        setToolbarTitle("Account")
                         goToUserData()
                     } ?: goToAuth()
                 }
 
-                ScreenTypes.SCREEN_CAR_LIST.position -> goToCarList()
-                ScreenTypes.SCREEN_CAR_FORM.position -> goToCarForm()
+                ScreenTypes.SCREEN_CAR_LIST.position -> {
+                    setToolbarTitle("List")
+                    goToCarList()
+                }
+                ScreenTypes.SCREEN_CAR_FORM.position -> {
+                    setToolbarTitle("Form")
+                    goToCarForm()
+                }
             }
         }
     }
@@ -65,5 +72,9 @@ class AHHomeActivity : AppCompatActivity() {
 
     private fun goToUserData() {
         binding.vpHome.setCurrentItem(ScreenTypes.SCREEN_USER_DATA.position, true)
+    }
+
+    private fun setToolbarTitle(title: String) {
+        binding.tvTitle.text = title
     }
 }
