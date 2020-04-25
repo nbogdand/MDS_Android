@@ -17,6 +17,40 @@
         android:layout_height="match_parent"
         tools:context=".home.views.activities.AHHomeActivity">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cly_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/imv_logo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/autohunt_logo"
+                android:layout_marginStart="@dimen/default_padding"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="@dimen/material_text_title"
+                android:text="List"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_home"
             android:layout_width="0dp"
@@ -24,7 +58,7 @@
             app:adapter="@{viewPagerAdapter}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cly_toolbar"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation_constraint"/>
 
         <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
@@ -43,7 +77,7 @@
                 android:id="@+id/c_item_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bt_active="false"
+                app:bt_active="true"
                 app:bt_colorActive="@color/colorMoss3"
                 app:bt_colorInactive="@color/colorMossAlternative"
                 app:bt_icon="@drawable/ic_to_do_list"
@@ -55,7 +89,7 @@
                 android:id="@+id/c_item_cat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bt_active="true"
+                app:bt_active="false"
                 app:bt_colorActive="@color/colorMoss3"
                 app:bt_colorInactive="@color/colorMossAlternative"
                 app:bt_icon="@drawable/ic_car"
