@@ -1,13 +1,14 @@
 package mds.mobile.autohunt.utils
 
-import android.R
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.Spinner
+import android.os.Build
+import android.widget.*
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener
+import mds.mobile.autohunt.R
 
 @BindingAdapter("navigationListener")
 fun setNavigationListener(
@@ -31,10 +32,36 @@ fun setupSpinnerAdapter(spinner: Spinner, list: ArrayList<String>){
     val spinnerAdapter =
         ArrayAdapter<String>(
             spinner.context,
-            R.layout.simple_spinner_item,
+            android.R.layout.simple_spinner_item,
             list
         )
 
     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
     spinner.adapter = spinnerAdapter
+}
+
+@BindingAdapter("isEditable")
+fun setEditable(editText: EditText, isEditable: Boolean?) {
+    isEditable?.let { editable ->
+        editText.isClickable = editable
+        editText.isFocusable = editable
+        editText.isCursorVisible = editable
+        editText.isFocusableInTouchMode = editable
+    }
+}
+
+@BindingAdapter("editSave")
+fun setEditSave(button: Button, editEnabled: Boolean?) {
+    editEnabled?.let { enabled ->
+        when (enabled) {
+            true -> {
+                button.text = "Save"
+                button.setBackgroundResource(R.drawable.shape_button_moss_3_round)
+            }
+            false -> {
+                button.text = "Edit"
+                button.setBackgroundResource(R.drawable.shape_button_moss_alternative_round)
+            }
+        }
+    }
 }
