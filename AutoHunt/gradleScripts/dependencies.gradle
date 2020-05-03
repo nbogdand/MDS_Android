@@ -26,7 +26,7 @@ ext {
             'circleImageView'   : '3.1.0',
             'glide'             : '4.11.0',
             'imageCropper'      : '2.8.0',
-            'photoView'         : '2.0.0',
+            'photoView'         : '2.3.0',
 
             // Utils
             'timber'            : '4.7.1',

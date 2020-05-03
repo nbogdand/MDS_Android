@@ -14,6 +14,7 @@
         <activity android:name=".authentication.views.activities.AHAuthActivity"
             android:windowSoftInputMode="adjustResize">
         </activity>
+        <activity android:name=".carDetails.views.activities.AHCarActivity"/>
         <activity android:name=".home.views.activities.AHHomeActivity" />
         <activity android:name=".splashscreen.AHSplashScreenActivity">
             <intent-filter>

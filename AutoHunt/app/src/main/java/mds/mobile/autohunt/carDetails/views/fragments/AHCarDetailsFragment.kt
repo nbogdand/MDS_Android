@@ -1,4 +1,4 @@
-package mds.mobile.autohunt.home.views.fragments.userData
+package mds.mobile.autohunt.carDetails.views.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,18 +8,26 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import mds.mobile.autohunt.R
-import mds.mobile.autohunt.databinding.AHUserDataFragmentBinding
-import mds.mobile.autohunt.home.viewModels.AHUserDataFragmentViewModel
-import mds.mobile.autohunt.home.views.fragments.AHHomeContainerFragment
+import mds.mobile.autohunt.carDetails.viewModels.AHCarDetailsViewModel
+import mds.mobile.autohunt.databinding.AHCarDetailsFragmentBinding
+import mds.mobile.autohunt.utils.AHConstants.Keys.FRAGMENT_OBJECT_ID
 import mds.mobile.autohunt.utils.viewModelFactory
 
-class AHUserDataFragment : Fragment() {
+class AHCarDetailsFragment: Fragment(){
 
-    private lateinit var binding: AHUserDataFragmentBinding
+    companion object {
+        fun newInstance(bundle: Bundle): AHCarDetailsFragment {
+            return AHCarDetailsFragment().apply {
+                arguments = bundle
+            }
+        }
+    }
+
+    private lateinit var binding: AHCarDetailsFragmentBinding
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory {
-            AHUserDataFragmentViewModel()
-        }).get(AHUserDataFragmentViewModel::class.java)
+            AHCarDetailsViewModel()
+        }).get(AHCarDetailsViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -29,17 +37,14 @@ class AHUserDataFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_user_data,
+            R.layout.fragment_car_details,
             container,
             false
         )
-        binding.lifecycleOwner = viewLifecycleOwner
-        return  binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.viewModel = viewModel
     }
 }

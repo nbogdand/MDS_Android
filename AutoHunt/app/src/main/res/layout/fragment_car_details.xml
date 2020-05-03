@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="AHCarDetailsFragmentBinding">
+
+        <variable
+            name="viewModel"
+            type="mds.mobile.autohunt.carDetails.viewModels.AHCarDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorMossAlternative">
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/imv_car"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/cars_background_2"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.30"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding_double"
+            app:cardCornerRadius="@dimen/default_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imv_car">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding_half"
+                android:text="Toyota Hilux"
+                android:textSize="@dimen/material_text_head"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_engine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding"
+            app:cardCornerRadius="@dimen/default_padding"
+            app:layout_constraintEnd_toStartOf="@id/cv_km"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_brand">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding_half"
+                android:text="1600 cm3"
+                android:textSize="@dimen/material_text_body1" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding"
+            app:cardCornerRadius="@dimen/default_padding"
+            app:layout_constraintEnd_toStartOf="@id/cv_fuel"
+            app:layout_constraintStart_toEndOf="@id/cv_engine"
+            app:layout_constraintTop_toBottomOf="@id/cv_brand">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding_half"
+                android:text="125 000km"
+                android:textSize="@dimen/material_text_body1" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_fuel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding"
+            app:cardCornerRadius="@dimen/default_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cv_km"
+            app:layout_constraintTop_toBottomOf="@id/cv_brand">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding_half"
+                android:text="Benzina"
+                android:textSize="@dimen/material_text_body1" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding"
+            app:cardCornerRadius="@dimen/default_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_km">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding_half"
+                android:text="12 000 €"
+                android:textSize="@dimen/material_text_head"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_padding_double"
+            app:cardCornerRadius="@dimen/default_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_price">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding_half"
+                android:minLines="4"
+                android:text="12 000 €"
+                android:textSize="@dimen/material_text_body1"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding_double"
+            app:cardCornerRadius="@dimen/default_padding"
+            app:layout_constraintEnd_toStartOf="@id/cv_msg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_message">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding_half"
+                android:drawableStart="@android:drawable/ic_menu_call"
+                android:drawablePadding="@dimen/default_padding_half"
+                android:gravity="center"
+                android:text="Call"
+                android:drawableTint="@color/colorMossAlternative"
+                android:textSize="@dimen/material_text_head" />
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding_double"
+            app:cardCornerRadius="@dimen/default_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cv_call"
+            app:layout_constraintTop_toBottomOf="@id/cv_message">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding_half"
+                android:drawableStart="@android:drawable/ic_dialog_email"
+                android:drawablePadding="@dimen/default_padding"
+                android:drawableTint="@color/colorMossAlternative"
+                android:drawableTintMode="src_atop"
+                android:gravity="center"
+                android:text="Message"
+                android:textSize="@dimen/material_text_head" />
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
