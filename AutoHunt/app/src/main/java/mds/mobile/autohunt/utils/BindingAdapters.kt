@@ -1,5 +1,8 @@
 package mds.mobile.autohunt.utils
 
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Build
 import android.widget.*
 import androidx.annotation.RequiresApi
@@ -21,7 +24,7 @@ fun setNavigationListener(
 }
 
 @BindingAdapter("loadImageFromUrl")
-fun setImageFromUrl(imageView: ImageView, url: String) {
+fun setImageFromUrl(imageView: ImageView, url: String?) {
     Glide.with(imageView.context)
         .load(url)
         .into(imageView)
@@ -64,4 +67,10 @@ fun setEditSave(button: Button, editEnabled: Boolean?) {
             }
         }
     }
+}
+
+@BindingAdapter("drawableTintColor")
+fun setDrawableTint(textView: TextView, color: Int) {
+    textView.compoundDrawableTintMode = PorterDuff.Mode.DST_OVER
+    textView.compoundDrawableTintList = ColorStateList.valueOf(color)
 }

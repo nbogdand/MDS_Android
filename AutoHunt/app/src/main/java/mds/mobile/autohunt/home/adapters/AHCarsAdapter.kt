@@ -13,6 +13,8 @@ class AHCarsAdapter(
     private val carsList: ArrayList<AHCar>
 ) : RecyclerView.Adapter<AHCarsAdapter.CarViewHolder>() {
 
+    var onClick: ((carId: String) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
         val binding = DataBindingUtil.inflate<AHCarItemDataBinding>(
             LayoutInflater.from(parent.context),
@@ -35,6 +37,9 @@ class AHCarsAdapter(
         fun bind(car: AHCar) {
             val viewModel = AHCarItemViewModel(car)
             binding.viewModel = viewModel
+            binding.cvContainer.setOnClickListener {
+                onClick?.invoke(car.id ?: return@setOnClickListener)
+            }
         }
     }
 }

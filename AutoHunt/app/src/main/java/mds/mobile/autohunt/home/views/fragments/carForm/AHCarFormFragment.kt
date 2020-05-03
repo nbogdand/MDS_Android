@@ -4,16 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import mds.mobile.autohunt.R
 import mds.mobile.autohunt.databinding.AHCarFormFragmentBinding
 import mds.mobile.autohunt.home.viewModels.AHCarFormFragmentViewModel
-import mds.mobile.autohunt.home.views.fragments.AHHomeBaseFragment
+import mds.mobile.autohunt.home.views.fragments.AHHomeContainerFragment
 import mds.mobile.autohunt.utils.viewModelFactory
 
-class AHCarFormFragment : AHHomeBaseFragment() {
+class AHCarFormFragment : AHHomeContainerFragment() {
 
     private lateinit var binding: AHCarFormFragmentBinding
     private val viewModel by lazy {

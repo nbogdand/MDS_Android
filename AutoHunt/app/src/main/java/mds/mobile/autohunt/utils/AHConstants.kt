@@ -6,6 +6,14 @@ object AHConstants {
     const val SPLASH_SCREEN_TIME = 3L
     const val BASE_API_URL = "https://57427b62.ngrok.io/"
 
+    object Keys {
+        const val FRAGMENT_OBJECT_ID = "FRAGMENT_OBJECT_ID"
+    }
+
+    object FragmentTags {
+        const val TAG_FRAGMENT_CAR_DETAILS = "TAG_FRAGMENT_CAR_DETAILS"
+    }
+
     object ValidationRules {
         const val PASSWORD_MIN_CHARACTERS = 8
         const val PASSWORD_MAX_CHARACTERS = 32

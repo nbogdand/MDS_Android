@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import mds.mobile.autohunt.globalUser.AHCurrentUser
-import mds.mobile.autohunt.home.views.fragments.AHHomeBaseFragment
+import mds.mobile.autohunt.home.views.fragments.AHHomeContainerFragment
 import mds.mobile.autohunt.home.views.fragments.carForm.AHCarFormFragment
 import mds.mobile.autohunt.home.views.fragments.carList.AHCarListFragment
 import mds.mobile.autohunt.home.views.fragments.userData.AHUserDataFragment
@@ -32,6 +32,6 @@ class AHHomeViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
                 AHUserDataFragment()
             }
-            else -> AHHomeBaseFragment()
+            else -> AHHomeContainerFragment()
         }
 }
