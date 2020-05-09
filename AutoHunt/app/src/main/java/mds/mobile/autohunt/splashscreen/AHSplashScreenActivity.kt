@@ -39,7 +39,7 @@ class AHSplashScreenActivity : AppCompatActivity() {
     }
 
     private fun startSession() {
-        val intent = Intent(this, AHHomeActivity::class.java)
+        val intent = Intent(this, AHAuthActivity::class.java)
         startActivity(intent)
         finish()
     }

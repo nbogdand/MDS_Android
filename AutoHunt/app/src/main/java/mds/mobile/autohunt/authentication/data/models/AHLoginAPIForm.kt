@@ -8,5 +8,8 @@ data class AHLoginAPIForm(
     @Expose val email: String,
 
     @SerializedName("password")
-    @Expose val password: String
+    @Expose val password: String,
+
+    @SerializedName("token")
+    @Expose val token: String
 )

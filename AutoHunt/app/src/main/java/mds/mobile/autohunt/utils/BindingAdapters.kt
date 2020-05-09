@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener
@@ -41,6 +42,11 @@ fun setupSpinnerAdapter(spinner: Spinner, list: ArrayList<String>){
 
     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
     spinner.adapter = spinnerAdapter
+}
+
+@BindingAdapter("onItemSelectedListener")
+fun setupSpinnerAdapter(spinner: Spinner, listener: AdapterView.OnItemSelectedListener){
+    spinner.onItemSelectedListener = listener
 }
 
 @BindingAdapter("isEditable")

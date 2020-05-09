@@ -1,5 +1,6 @@
 package mds.mobile.autohunt.authentication.views.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import mds.mobile.autohunt.R
 import mds.mobile.autohunt.authentication.viewModels.AHLoginFragmentViewModel
 import mds.mobile.autohunt.databinding.AHLoginFragmentBinding
+import mds.mobile.autohunt.home.views.activities.AHHomeActivity
 
 class AHLoginFragment : AHBaseAuthFragment() {
 
@@ -44,7 +46,14 @@ class AHLoginFragment : AHBaseAuthFragment() {
 
         binding.viewModel = viewModel
         viewModel.goToRegister = { authNavigation?.goToRegister() }
-        viewModel.onLoginSuccess = { activity?.finish() }
+        viewModel.onLoginSuccess = {
+            goToHome()
+            activity?.finish()
+        }
     }
 
+    private fun goToHome() = activity?.let{
+        val intent = Intent(it, AHHomeActivity::class.java)
+        startActivity(intent)
+    }
 }

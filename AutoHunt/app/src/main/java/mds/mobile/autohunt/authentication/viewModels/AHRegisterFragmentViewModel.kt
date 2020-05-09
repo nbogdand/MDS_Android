@@ -32,8 +32,8 @@ class AHRegisterFragmentViewModel
         if(BuildConfig.DEBUG){
             email.set("nbogdand@yahoo.com")
             name.set("Bogdan")
-            password.set("Test1234")
-            confirmPassword.set("Test1234")
+            password.set("password")
+            confirmPassword.set("password")
         }
     }
 

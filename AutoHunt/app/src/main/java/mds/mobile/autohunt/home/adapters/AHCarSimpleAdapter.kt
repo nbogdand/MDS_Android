@@ -11,8 +11,10 @@ import mds.mobile.autohunt.databinding.AHCarItemDataBinding
 import mds.mobile.autohunt.home.models.AHCar
 import mds.mobile.autohunt.home.viewModels.AHCarItemViewModel
 
-class AHCarsAdapter(
-) : PagedListAdapter<AHCar, AHCarsAdapter.CarViewHolder>(DIFF_CALLBACK) {
+
+class AHCarSimpleAdapter(
+    private val list: ArrayList<AHCar>
+) : RecyclerView.Adapter<AHCarSimpleAdapter.CarViewHolder>() {
 
     var onClick: ((carId: Int) -> Unit)? = null
 
@@ -27,8 +29,10 @@ class AHCarsAdapter(
     }
 
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it) }
+        holder.bind(list[position])
     }
+
+    override fun getItemCount(): Int = list.size
 
     inner class CarViewHolder(private val binding: AHCarItemDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -38,24 +42,6 @@ class AHCarsAdapter(
             binding.viewModel = viewModel
             binding.cvContainer.setOnClickListener {
                 onClick?.invoke(car.id ?: return@setOnClickListener)
-            }
-        }
-    }
-
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AHCar>() {
-            override fun areItemsTheSame(
-                oldItem: AHCar,
-                newItem: AHCar
-            ): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(
-                oldItem: AHCar,
-                newItem: AHCar
-            ): Boolean {
-                return oldItem == newItem
             }
         }
     }

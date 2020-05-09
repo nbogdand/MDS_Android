@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data class="AHCarDetailsFragmentBinding">
 
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_padding_double"
             app:cardCornerRadius="@dimen/default_padding"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cv_price"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imv_car">
 
@@ -39,16 +40,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_padding_half"
-                android:text="Toyota Hilux"
+                android:paddingStart="@dimen/default_padding_half"
+                android:paddingEnd="@dimen/default_padding_half"
+                android:text="@{viewModel.car.brand + ` ` +viewModel.car.model}"
                 android:textSize="@dimen/material_text_head"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Toyota Hillux" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_engine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding_double"
             app:cardCornerRadius="@dimen/default_padding"
             app:layout_constraintEnd_toStartOf="@id/cv_km"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_padding_half"
-                android:text="1600 cm3"
+                android:text="20000 cm3"
                 android:textSize="@dimen/material_text_body1" />
         </androidx.cardview.widget.CardView>
 
@@ -66,7 +70,7 @@
             android:id="@+id/cv_km"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding_double"
             app:cardCornerRadius="@dimen/default_padding"
             app:layout_constraintEnd_toStartOf="@id/cv_fuel"
             app:layout_constraintStart_toEndOf="@id/cv_engine"
@@ -76,15 +80,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_padding_half"
-                android:text="125 000km"
-                android:textSize="@dimen/material_text_body1" />
+                android:text="@{`Year: ` + viewModel.car.year}"
+                android:textSize="@dimen/material_text_body1"
+                tools:text="Year: 2008" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_fuel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding_double"
             app:cardCornerRadius="@dimen/default_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cv_km"
@@ -94,39 +99,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_padding_half"
-                android:text="Benzina"
-                android:textSize="@dimen/material_text_body1" />
+                android:text="@{viewModel.car.fuelType}"
+                android:textSize="@dimen/material_text_body1"
+                tools:text="Benzina" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_padding"
             app:cardCornerRadius="@dimen/default_padding"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_km">
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/cv_brand"
+            app:layout_constraintTop_toTopOf="@id/cv_brand">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_padding_half"
-                android:text="12 000 €"
+                android:paddingStart="@dimen/default_padding_half"
+                android:paddingEnd="@dimen/default_padding_half"
+                android:text="@{viewModel.car.price + ` €`}"
                 android:textSize="@dimen/material_text_head"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="12 000€" />
         </androidx.cardview.widget.CardView>
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_message"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="@dimen/default_padding_double"
             app:cardCornerRadius="@dimen/default_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.15"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_price">
+            app:layout_constraintTop_toBottomOf="@id/cv_km"
+            app:layout_constraintVertical_bias="0.20">
 
             <TextView
                 android:layout_width="match_parent"
@@ -155,9 +167,9 @@
                 android:layout_margin="@dimen/default_padding_half"
                 android:drawableStart="@android:drawable/ic_menu_call"
                 android:drawablePadding="@dimen/default_padding_half"
+                android:drawableTint="@color/colorMossAlternative"
                 android:gravity="center"
                 android:text="Call"
-                android:drawableTint="@color/colorMossAlternative"
                 android:textSize="@dimen/material_text_head" />
         </androidx.cardview.widget.CardView>
 
@@ -185,6 +197,26 @@
                 android:textSize="@dimen/material_text_head" />
         </androidx.cardview.widget.CardView>
 
+
+        <ImageView
+            android:id="@+id/imv_blur"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="10dp"
+            android:alpha="0.95"
+            android:background="@drawable/shape_color_moss_alternative"
+            android:backgroundTint="@color/colorMossAlternative"/>
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:indicatorName="com.wang.avi.indicators.BallClipRotateIndicator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.50"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

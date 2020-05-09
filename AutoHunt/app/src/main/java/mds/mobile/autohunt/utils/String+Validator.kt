@@ -16,9 +16,10 @@ fun String.isValidUsername(): Boolean = this.isNotEmpty() &&
 fun String.isValidEmail(): Boolean = this.isNotEmpty() &&
         Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
-fun String.isValidPassword(): Boolean = this.isNotEmpty() &&
-        AHConstants.Patterns.passwordRegex.matcher(this).matches() &&
-        !AHConstants.Patterns.spaceRegex.matcher(this).matches()
+fun String.isValidPassword(): Boolean = this.isNotEmpty()
+//        &&
+//        AHConstants.Patterns.passwordRegex.matcher(this).matches() &&
+//        !AHConstants.Patterns.spaceRegex.matcher(this).matches()
 
 fun String.isValidNumber(): Boolean = this.isNotEmpty() &&
         AHConstants.Patterns.numberPattern.matcher(this).matches()

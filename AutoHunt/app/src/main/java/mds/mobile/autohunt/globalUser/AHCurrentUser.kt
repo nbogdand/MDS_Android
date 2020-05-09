@@ -17,4 +17,12 @@ object AHCurrentUser {
             user = newUser
         }
     }
+
+    fun loadUser(
+        name: String? = null,
+        email: String? = null,
+        phone: String? = null
+    ) {
+
+    }
 }
