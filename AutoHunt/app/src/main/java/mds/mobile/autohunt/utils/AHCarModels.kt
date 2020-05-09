@@ -1,6 +1,5 @@
 package mds.mobile.autohunt.utils
 
-import mds.mobile.autohunt.shared.AHCarModelsAPIResponse
 import mds.mobile.autohunt.shared.AHModelAPIResponse
 
 object AHCarModels {

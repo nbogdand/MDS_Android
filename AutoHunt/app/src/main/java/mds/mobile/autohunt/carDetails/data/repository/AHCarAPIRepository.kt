@@ -10,4 +10,10 @@ object AHCarAPIRepository {
 
     fun getCars(page: Int, size: Int) =
         carApi.getCars(page, size)
+
+    fun getAllCarsByBrand(brand: String) =
+        carApi.getAllCarsByBrand(brand)
+
+    fun getCarDetails(id: Int) =
+        carApi.getCarDetails(id)
 }

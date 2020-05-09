@@ -40,7 +40,7 @@ class AHCarsDataSource(
                     callback.onResult(response.content, null, FIRST_PAGE + 1)
                 },
                 { throwable ->
-                    "Followers List loadInitial - error: ${throwable.message}".provideInfo()
+                    "Get cars List loadInitial - error: ${throwable.message}".provideInfo()
                     updateState(PaginatedListNetworkingState.ERROR)
                 }
             )

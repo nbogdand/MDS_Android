@@ -44,6 +44,11 @@ fun setupSpinnerAdapter(spinner: Spinner, list: ArrayList<String>){
     spinner.adapter = spinnerAdapter
 }
 
+@BindingAdapter("onItemSelectedListener")
+fun setupSpinnerAdapter(spinner: Spinner, listener: AdapterView.OnItemSelectedListener){
+    spinner.onItemSelectedListener = listener
+}
+
 @BindingAdapter("isEditable")
 fun setEditable(editText: EditText, isEditable: Boolean?) {
     isEditable?.let { editable ->

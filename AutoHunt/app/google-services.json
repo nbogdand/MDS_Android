@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "644809608286",
+    "firebase_url": "https://mds-backend.firebaseio.com",
+    "project_id": "mds-backend",
+    "storage_bucket": "mds-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644809608286:android:f22cfa01b073e254b938cf",
+        "android_client_info": {
+          "package_name": "mds.mobile.autohunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644809608286-4h0c2ibssqmpbtnqkpbp5gic9a2r1d3v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mds.mobile.autohunt",
+            "certificate_hash": "c1f7ecb747bf350366f13144fa81fbd23d7a0c06"
+          }
+        },
+        {
+          "client_id": "644809608286-cv3jfk9b7erpehei142v6hmcn7a0ep0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqTmKRe5W_dXGdy-Z1517JIaixYiGR7Cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644809608286-cv3jfk9b7erpehei142v6hmcn7a0ep0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

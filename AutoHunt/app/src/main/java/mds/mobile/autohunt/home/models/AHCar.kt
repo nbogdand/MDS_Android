@@ -1,7 +1,7 @@
 package mds.mobile.autohunt.home.models
 
 data class AHCar (
-    val id: String? = null,
+    val id: Int? = null,
     val brand: String? = null,
     val model: String? = null,
     val price: Int? = null,
@@ -13,7 +13,7 @@ data class AHCar (
     companion object {
         fun getPlaceholder() =
             AHCar(
-                id = "0001",
+                id = 1,
                 brand = "Toyota",
                 model = "Camry",
                 price = 10000,

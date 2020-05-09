@@ -1,15 +1,17 @@
 package mds.mobile.autohunt.home.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.internal.operators.single.SingleDoOnSuccess
+import io.reactivex.schedulers.Schedulers
 import mds.mobile.autohunt.carDetails.data.dataSource.AHCarsDataSource
 import mds.mobile.autohunt.carDetails.data.dataSource.AHCarsDataSourceFactory
+import mds.mobile.autohunt.carDetails.data.repository.AHCarAPIRepository
 import mds.mobile.autohunt.home.models.AHCar
+import mds.mobile.autohunt.utils.provideInfo
 
 class AHCarListFragmentViewModel(
 //    autoDisposable: CompositeDisposable
@@ -38,5 +40,21 @@ class AHCarListFragmentViewModel(
 
     fun refreshList() {
         liveDataSource.value?.invalidate()
+    }
+
+    fun getAllCarByBrand(
+        brand: String,
+        onSuccess: (ArrayList<AHCar>) -> Unit
+    ) {
+        val disposable = AHCarAPIRepository.getAllCarsByBrand(
+            brand = brand
+        )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response ->
+                onSuccess.invoke(response)
+            }, { error ->
+                "Get car by brand error:${error}".provideInfo()
+            })
     }
 }

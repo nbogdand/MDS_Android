@@ -5,7 +5,7 @@
     <data class="AHCarListFragmentBinding">
         <variable
             name="adapter"
-            type="mds.mobile.autohunt.home.adapters.AHCarsAdapter" />
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

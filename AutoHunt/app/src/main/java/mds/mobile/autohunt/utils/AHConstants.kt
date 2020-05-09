@@ -4,7 +4,7 @@ import java.util.regex.Pattern
 
 object AHConstants {
     const val SPLASH_SCREEN_TIME = 3L
-    const val BASE_API_URL = "https://029b6acd.ngrok.io/"
+    const val BASE_API_URL = "https://a89424f5.ngrok.io/"
 
     object Keys {
         const val FRAGMENT_OBJECT_ID = "FRAGMENT_OBJECT_ID"

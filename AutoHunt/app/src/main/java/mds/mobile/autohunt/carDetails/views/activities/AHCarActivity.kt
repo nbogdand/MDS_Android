@@ -25,7 +25,7 @@ class AHCarActivity: AppCompatActivity() {
 
     private fun loadCarDetailFragment() {
         val bundle = Bundle()
-        bundle.putString(FRAGMENT_OBJECT_ID, getCarId())
+        bundle.putInt(FRAGMENT_OBJECT_ID, getCarId())
         val carFragment = AHCarDetailsFragment.newInstance(bundle)
 
         supportFragmentManager.beginTransaction()
@@ -34,11 +34,11 @@ class AHCarActivity: AppCompatActivity() {
             .commit()
     }
 
-    private fun getCarId(): String {
-        return intent.extras?.getString(FRAGMENT_OBJECT_ID) ?: run {
+    private fun getCarId(): Int {
+        return intent.extras?.getInt(FRAGMENT_OBJECT_ID) ?: run {
             Toast.makeText(applicationContext, "Car ID not found", Toast.LENGTH_LONG).show()
             finish()
-            ""
+            0
         }
     }
 

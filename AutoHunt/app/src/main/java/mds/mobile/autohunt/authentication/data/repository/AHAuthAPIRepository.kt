@@ -10,10 +10,11 @@ object AHAuthAPIRepository {
         AHAPIClient.retrofitClient.create(AuthAPI::class.java)
     }
 
-    fun loginUser(email: String, password: String) =
+    fun loginUser(email: String, password: String, token: String) =
         authAPI.loginUser(AHLoginAPIForm(
             email = email,
-            password = password
+            password = password,
+            token = token
         ))
 
     fun registerUser(email: String, name: String, password: String) =

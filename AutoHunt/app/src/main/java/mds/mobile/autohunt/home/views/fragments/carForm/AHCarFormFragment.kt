@@ -5,26 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import mds.mobile.autohunt.R
 import mds.mobile.autohunt.databinding.AHCarFormFragmentBinding
 import mds.mobile.autohunt.home.viewModels.AHCarFormFragmentViewModel
 import mds.mobile.autohunt.home.views.fragments.AHHomeContainerFragment
+import mds.mobile.autohunt.shared.AHHomeSharedViewModel
 import mds.mobile.autohunt.utils.AHCarModels
 import mds.mobile.autohunt.utils.viewModelFactory
 
 class AHCarFormFragment : AHHomeContainerFragment() {
 
     private lateinit var binding: AHCarFormFragmentBinding
+    private lateinit var sharedViewModel: AHHomeSharedViewModel
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory {
-            AHCarFormFragmentViewModel(
-                brands = getBrands()
-            )
+            AHCarFormFragmentViewModel()
         }).get(AHCarFormFragmentViewModel::class.java)
     }
-
-    private var carBrands: ArrayList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,23 +44,23 @@ class AHCarFormFragment : AHHomeContainerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupSharedViewModel()
+        setupObservers()
         binding.viewModel = viewModel
     }
 
-    override fun onStart() {
-        super.onStart()
-        carBrands = getBrands()
+    private fun setupSharedViewModel() = activity?.let{
+        sharedViewModel = ViewModelProvider(it, viewModelFactory {
+            AHHomeSharedViewModel()
+        }).get(AHHomeSharedViewModel::class.java)
     }
 
-    private fun getBrands(): ArrayList<String> {
-        AHCarModels.carBrands?.let { return it } ?: kotlin.run {
-            val brands = ArrayList<String>()
-            brands.add("Audi")
-            brands.add("BMW")
-            brands.add("Honda")
-            brands.add("Toyota")
-
-            return brands
-        }
+    private fun setupObservers() {
+        viewModel.mutableSelectedBrand.observe(viewLifecycleOwner, Observer {
+            sharedViewModel.mutableSelectedBrand.value = it
+        })
+        viewModel.mutableSelectedModel.observe(viewLifecycleOwner, Observer {
+            sharedViewModel.mutableSelectedModel.value = it
+        })
     }
 }

@@ -44,6 +44,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+//    implementation 'com.google.firebase:firebase-analytics:17.4.2'
+    implementation 'com.google.firebase:firebase-messaging:20.1.7'
+    implementation 'com.google.firebase:firebase-core:17.4.0'
+    implementation "com.google.firebase:firebase-appindexing:19.1.0"
+
     // Design
     implementation "com.google.android.material:material:$versions.material"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
@@ -86,4 +91,8 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$versions.timber"
     implementation "com.github.ybq:Android-SpinKit:$versions.spinner"
     implementation "com.gauravk.bubblenavigation:bubblenavigation:$versions.bubbleNavigation"
+    implementation "org.conscrypt:conscrypt-android:$versions.conscrypt"
+    implementation "com.wang.avi:library:$versions.progressLibrary"
 }
+
+apply plugin: 'com.google.gms.google-services'
