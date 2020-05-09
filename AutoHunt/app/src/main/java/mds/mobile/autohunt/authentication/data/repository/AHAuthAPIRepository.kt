@@ -1,13 +1,13 @@
 package mds.mobile.autohunt.authentication.data.repository
 
 import mds.mobile.autohunt.authentication.data.api.AuthAPI
-import mds.mobile.autohunt.authentication.data.client.AHAuthClient
+import mds.mobile.autohunt.authentication.data.client.AHAPIClient
 import mds.mobile.autohunt.authentication.data.models.AHLoginAPIForm
 import mds.mobile.autohunt.authentication.data.models.AHRegisterAPIForm
 
 object AHAuthAPIRepository {
     private val authAPI by lazy {
-        AHAuthClient.retrofitClient.create(AuthAPI::class.java)
+        AHAPIClient.retrofitClient.create(AuthAPI::class.java)
     }
 
     fun loginUser(email: String, password: String) =

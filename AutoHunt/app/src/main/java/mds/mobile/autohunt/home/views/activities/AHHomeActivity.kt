@@ -40,11 +40,11 @@ class AHHomeActivity : AppCompatActivity() {
         binding.bottomNavigationConstraint.setNavigationChangeListener { _, position ->
             when (position) {
                 ScreenTypes.SCREEN_USER_DATA.position -> {
-                    AHCurrentUser.user = AHUser(
-                        id = "1",
-                        name = "Bogdan",
-                        email = "nbogdand@yahoo.com"
-                    )
+//                    AHCurrentUser.user = AHUser(
+//                        id = "1",
+//                        name = "Bogdan",
+//                        email = "nbogdand@yahoo.com"
+//                    )
 
                     AHCurrentUser.user?.let {
                         setToolbarTitle("Account")

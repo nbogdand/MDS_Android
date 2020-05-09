@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener

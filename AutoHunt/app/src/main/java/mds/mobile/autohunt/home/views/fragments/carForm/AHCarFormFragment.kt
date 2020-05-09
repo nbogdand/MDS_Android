@@ -10,6 +10,7 @@ import mds.mobile.autohunt.R
 import mds.mobile.autohunt.databinding.AHCarFormFragmentBinding
 import mds.mobile.autohunt.home.viewModels.AHCarFormFragmentViewModel
 import mds.mobile.autohunt.home.views.fragments.AHHomeContainerFragment
+import mds.mobile.autohunt.utils.AHCarModels
 import mds.mobile.autohunt.utils.viewModelFactory
 
 class AHCarFormFragment : AHHomeContainerFragment() {
@@ -22,6 +23,8 @@ class AHCarFormFragment : AHHomeContainerFragment() {
             )
         }).get(AHCarFormFragmentViewModel::class.java)
     }
+
+    private var carBrands: ArrayList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,13 +47,20 @@ class AHCarFormFragment : AHHomeContainerFragment() {
         binding.viewModel = viewModel
     }
 
-    private fun getBrands(): ArrayList<String> {
-        val brands = ArrayList<String>()
-        brands.add("Audi")
-        brands.add("BMW")
-        brands.add("Honda")
-        brands.add("Toyota")
+    override fun onStart() {
+        super.onStart()
+        carBrands = getBrands()
+    }
 
-        return brands
+    private fun getBrands(): ArrayList<String> {
+        AHCarModels.carBrands?.let { return it } ?: kotlin.run {
+            val brands = ArrayList<String>()
+            brands.add("Audi")
+            brands.add("BMW")
+            brands.add("Honda")
+            brands.add("Toyota")
+
+            return brands
+        }
     }
 }

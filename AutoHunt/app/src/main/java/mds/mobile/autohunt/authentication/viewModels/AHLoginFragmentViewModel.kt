@@ -2,6 +2,7 @@ package mds.mobile.autohunt.authentication.viewModels
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -11,6 +12,8 @@ import mds.mobile.autohunt.authentication.data.models.AHLoginAPIForm
 import mds.mobile.autohunt.authentication.data.repository.AHAuthAPIRepository
 import mds.mobile.autohunt.authentication.data.repository.AHAuthValidationRepository
 import mds.mobile.autohunt.globalUser.AHCurrentUser
+import mds.mobile.autohunt.utils.AHCarModels
+import mds.mobile.autohunt.utils.showToastMessage
 
 class AHLoginFragmentViewModel : ViewModel() {
 
@@ -24,7 +27,7 @@ class AHLoginFragmentViewModel : ViewModel() {
     private val authValidationRepository = AHAuthValidationRepository()
 
     init {
-        if(BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             email.set("nbogdand@yahoo.com")
             password.set("Test1234")
         }
@@ -53,7 +56,8 @@ class AHLoginFragmentViewModel : ViewModel() {
         error.set("")
         loginEnabled.set(
             email.get()?.isNotEmpty() ?: false &&
-                    password.get()?.isNotEmpty() ?: false)
+                    password.get()?.isNotEmpty() ?: false
+        )
     }
 
     @SuppressLint("LogNotTimber")
@@ -66,15 +70,22 @@ class AHLoginFragmentViewModel : ViewModel() {
         )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe( { user ->
-                AHCurrentUser.user = user
-                onLoginSuccess?.invoke()
-                Log.e("tag", "Login user success: ${user.toString()}")
-            }
-            ,{
-                Log.e("tag", "Login user failed ${it.message}")
-            }
+            .subscribe(
+                { response ->
+
+                    AHCurrentUser.user = response?.user
+                    AHCarModels.carModels = response?.carModels
+                    AHCarModels.carBrands = response?.brandTypes
+
+                    onLoginSuccess?.invoke()
+                    Log.e("tag", "Login user success: ${response?.user.toString()}")
+                    "Login user success: ${response?.user?.email?.toString()}".showToastMessage()
+                }, {
+                    Log.e("tag", "Login user failed ${it.message}")
+                    "Login user failed ${it.message}".showToastMessage()
+                }
             )
+
     }
 
     override fun onCleared() {
