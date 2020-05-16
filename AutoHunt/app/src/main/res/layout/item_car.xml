@@ -7,6 +7,7 @@
         <variable
             name="viewModel"
             type="mds.mobile.autohunt.home.viewModels.AHCarItemViewModel" />
+        <import type="mds.mobile.autohunt.utils.ExtensionsKt"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -44,8 +45,7 @@
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/tv_km
-"
+                app:layout_constraintBottom_toTopOf="@id/tv_km"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imv_car"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +65,7 @@
                 android:id="@+id/tv_km"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{@string/car_km(viewModel.car.kilometers)}"
+                android:text="@{@string/car_km(ExtensionsKt.getKM(viewModel.car.kilometers))}"
                 android:textAlignment="center"
                 android:layout_marginTop="@dimen/default_padding"
                 app:layout_constraintEnd_toStartOf="@id/tv_fuel"

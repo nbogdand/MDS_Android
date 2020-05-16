@@ -5,12 +5,15 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import kotlin.random.Random
 
 @Suppress("UNCHECKED_CAST")
 fun <VM : ViewModel> viewModelFactory(f: () -> VM) =
     object : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(aClass: Class<T>): T = f() as T
     }
+
+fun Int?.getKM() = Random.nextInt(5000, 200000)
 
 fun String.showToastMessage() {
     Toast.makeText(
