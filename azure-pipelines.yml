@@ -30,4 +30,5 @@ steps:
     jarsignerKeystorePassword: '$(jarsignerKeystorePassword)'
     jarsignerKeystoreAlias: 'appautohunt'
     jarsignerKeyPassword: '$(jarsignerKeyPassword)'
+    apksignerArguments: --ks-pass stdin  --key-pass stdin 
     zipalign: false
