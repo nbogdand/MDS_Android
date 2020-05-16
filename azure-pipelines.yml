@@ -30,4 +30,4 @@ steps:
     apksignerKeystorePassword: '$(jarsignerKeystorePassword)'
     apksignerKeystoreAlias: 'appautohunt'
     apksignerKeyPassword: '$(jarsignerKeyPassword)'
-    zipalign: true
+    zipalign: false
