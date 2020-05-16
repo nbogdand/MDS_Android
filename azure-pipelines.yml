@@ -25,9 +25,9 @@ steps:
 - task: AndroidSigning@3
   inputs:
     apkFiles: '**/*.apk'
-    jarsign: true
-    jarsignerKeystoreFile: 'AutoHunt/autohunt-keys/autohuntkeystore'
-    jarsignerKeystorePassword: '$(jarsignerKeystorePassword)'
-    jarsignerKeystoreAlias: 'appautohunt'
-    jarsignerKeyPassword: '$(jarsignerKeyPassword)'
+    apksign: true
+    apksignerKeystoreFile: 'autohuntkeystore'
+    apksignerKeystorePassword: '$(jarsignerKeystorePassword)'
+    apksignerKeystoreAlias: 'appautohunt'
+    apksignerKeyPassword: '$(jarsignerKeyPassword)'
     zipalign: true
